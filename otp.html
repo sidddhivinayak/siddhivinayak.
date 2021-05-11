@@ -1,0 +1,60 @@
+<html>
+<title>OTP</title>
+<style>
+    div {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h2>Dear &nbsp;<b><u><span id="result"></span></u></b><br>Thank you for your enquiry. <br>
+        A 4 digit verification number has been sent to your phone number:
+        <u> <span id="phone"></span></u>, <br>please enter in the following box and submit for confirmation:</valid>
+       &nbsp;&nbsp; <span id="Myotp"></span>
+    </h2>
+    <input type="text" id='otp' maxlength="4">
+    <input type="button" value="submit" id="submit" onclick="validotp()">
+
+    <script>
+//fetching data from mainpage.html
+        document.getElementById("result").innerHTML = localStorage.getItem("textvalue");
+        document.getElementById("phone").innerHTML = localStorage.getItem("phoneN");
+        var abc = document.getElementById("Myotp").innerHTML = localStorage.getItem("myotp");
+
+        console.log(Myotp)
+        var attempt = 3; // Variable to count number of attempts.
+        function validotp() {
+           
+            // Below function Executes on click of login button.
+            var votp = document.getElementById("otp").value;
+           
+           
+            if (votp == abc) {
+                document.write("successfull validation")
+                window.location = "http://pixel6.co/"; // Redirecting to other page.
+                return false;
+            }
+            
+            else {
+                    
+               
+                attempt --;// Decrementing by one.
+                alert("You have left " + attempt + "attempt;");
+            
+                // Disabling fields after 3 attempts.
+                if (attempt == 0) {
+                    document.getElementById("otp").disabled = true;
+
+                    document.getElementById("submit").disabled = true;
+                    document.write("UNsuccessfull validation")
+                    window.location = "http://pixel6.co/contact/kmfkm";
+                    return false;
+                }
+            }
+            
+        }
+
+    </script>
+</body>
+
+</html>
